@@ -1,0 +1,22 @@
+{
+  "name": "vendor/google-auth",
+  "description": "Google OAuth Login via Laravel Socialite",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Vendor\\GoogleAuth\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Vendor\\GoogleAuth\\GoogleServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "laravel/socialite": "^5.2"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
