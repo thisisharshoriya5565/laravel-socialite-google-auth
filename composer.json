@@ -1,5 +1,5 @@
 {
-    "name": "vendor/google-auth",
+    "name": "thisisharshoriya5565/laravel-socialite-google-auth",
     "description": "Google OAuth Login via Laravel Socialite",
     "type": "library",
     "autoload": {
@@ -7,22 +7,16 @@
             "Vendor\\GoogleAuth\\": "src/"
         }
     },
+    "require": {
+        "laravel/socialite": "^5.2"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "extra": {
         "laravel": {
             "providers": [
                 "Vendor\\GoogleAuth\\GoogleServiceProvider"
             ]
         }
-    },
-    "require": {
-        "laravel/socialite": "^5.2"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/thisisharshoriya5565/laravel-socialite-google-auth"
-        }
-    ]
+    }
 }
