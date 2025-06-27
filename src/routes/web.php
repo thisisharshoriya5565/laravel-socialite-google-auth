@@ -3,5 +3,7 @@
 use Vendor\GoogleAuth\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('auth/google', [GoogleController::class, 'redirect']);
-Route::get('auth/google/callback', [GoogleController::class, 'callback']);
+Route::prefix('google')->controller(GoogleController::class)->group(function () {
+    Route::get('/redirect', 'redirect')->name('google.redirect');
+    Route::get('/callback', 'callback')->name('google.callback');
+});
