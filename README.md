@@ -18,6 +18,7 @@
 ### Option 1: Install from GitHub (recommended)
 
 1. In your Laravel app's `composer.json`, add:
+```json
 {
   "repositories": [
     {
@@ -26,21 +27,23 @@
     }
   ]
 }
+```
 
 
-
-2. Require the package:
+3. Require the package:
 Run CLI :: composer require thisisharshoriya5565/laravel-socialite-google-auth:dev-main
 
 Option 2: Local Development (optional)
 If you have the package locally under packages/Vendor/GoogleAuth, add this to composer.json:
 
-json : "repositories": [
+```json
+"repositories": [
           {
               "type": "path",
               "url": "packages/Vendor/GoogleAuth"
           }
       ]
+```
 
 Then :
 bish :: composer require vendor/laravel-socialite-google-auth:dev-main
