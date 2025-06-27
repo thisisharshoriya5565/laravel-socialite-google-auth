@@ -18,13 +18,15 @@
 ### Option 1: Install from GitHub (recommended)
 
 1. In your Laravel app's `composer.json`, add:
-```json
-"repositories": [
-  {
-    "type": "vcs",
-    "url": "https://github.com/thisisharshoriya5565/laravel-socialite-google-auth"
-  }
-]
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/thisisharshoriya5565/laravel-socialite-google-auth"
+    }
+  ]
+}
+
 
 
 2. Require the package:
