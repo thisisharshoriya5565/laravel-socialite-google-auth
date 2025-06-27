@@ -92,7 +92,7 @@ User is created or updated with:
 </head>
 
 <body>
-    <button type="button" id="google-login-btn">Login With Google</button>
+    <code> <button type="button" id="google-login-btn">Login With Google Button</button> </code>
 
     <script src="http://admin.b2code.in/cdn/js/oauth-popup-login.obf.js" async defer></script>
     <script async defer>
