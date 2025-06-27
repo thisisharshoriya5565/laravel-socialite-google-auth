@@ -1,21 +1,31 @@
-🔐 Laravel Socialite Google Auth
+# 🔐 Laravel Socialite Google Auth
+
 ✅ A simple Laravel package to integrate Google OAuth login using Laravel Socialite.
 
-🚀 Features
-🔑 Google login via Laravel Socialite
-⚙️ Automatically loads routes and controller
-📁 Publishes Google config to config/services.php
-✅ Works with Laravel 8, 9, 10+
+---
 
-📦 Installation
-Option 1: Install from GitHub (recommended)
-1. In your Laravel app's composer.json, add:
-   json : "repositories": [
-          {
-            "type": "vcs",
-            "url": "https://github.com/thisisharshoriya5565/laravel-socialite-google-auth"
-          }
-        ]
+## 🚀 Features
+
+- 🔑 Google login via Laravel Socialite  
+- ⚙️ Automatically loads routes and controller  
+- 📁 Publishes Google config to `config/services.php`  
+- ✅ Works with Laravel 8, 9, 10+
+
+---
+
+## 📦 Installation
+
+### Option 1: Install from GitHub (recommended)
+
+1. In your Laravel app's `composer.json`, add:
+```json
+"repositories": [
+  {
+    "type": "vcs",
+    "url": "https://github.com/thisisharshoriya5565/laravel-socialite-google-auth"
+  }
+]
+
 
 2. Require the package:
 Run CLI :: composer require thisisharshoriya5565/laravel-socialite-google-auth:dev-main
