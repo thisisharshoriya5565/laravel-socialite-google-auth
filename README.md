@@ -31,7 +31,10 @@
 
 
 3. Require the package:
-Run CLI :: composer require thisisharshoriya5565/laravel-socialite-google-auth:dev-main
+Run CLI ::
+```bash
+composer require thisisharshoriya5565/laravel-socialite-google-auth:dev-main
+```
 
 Option 2: Local Development (optional)
 If you have the package locally under packages/Vendor/GoogleAuth, add this to composer.json:
@@ -46,7 +49,9 @@ If you have the package locally under packages/Vendor/GoogleAuth, add this to co
 ```
 
 Then :
-bish :: composer require vendor/laravel-socialite-google-auth:dev-main
+```bash
+composer require vendor/laravel-socialite-google-auth:dev-main
+```
 
 ⚙️ Configuration
 1. Add to .env file : <br>
