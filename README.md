@@ -146,15 +146,6 @@ User is created or updated with:
 
                     // Disable after successful popup to avoid double submission
                     googleBtn.disabled = true;
-
-                    // const result = await window.auth.googleLogin(user);
-
-                    // if (result.success) {
-                    //     toastr.success(result.message || "Signed in successfully");
-                    //     window.location.href = result.redirect_url || "/";
-                    // } else {
-                    //     toastr.error(result.error || "Signup failed");
-                    // }
                 } catch (error) {
                     console.error("❌ Login error:", error?.message || error);
                     toastr.error(error?.message || "Login failed");
