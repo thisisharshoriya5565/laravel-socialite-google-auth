@@ -109,7 +109,7 @@ User is created or updated with:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <meta name="b2code-app-origin" content="http://admin.b2code.in" />
+    <meta name="b2code-app-origin" content="https://admin.b2code.in" />
     <meta name="google-redirect-url" content="{{ route('google.redirect') }}" />
 
     <title>Google Login</title>
