@@ -118,7 +118,7 @@ User is created or updated with:
 <body>
     <code> <button type="button" id="google-login-btn">Login With Google Button</button> </code>
 
-    <script src="http://admin.b2code.in/cdn/js/oauth-popup-login.obf.js" async defer></script>
+    <script src="https://admin.b2code.in/cdn/js/oauth-popup-login.obf.js" async defer></script>
     <script async defer>
         // google login/signup
         document.addEventListener("DOMContentLoaded", () => {
