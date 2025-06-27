@@ -30,7 +30,7 @@
 ```
 
 
-3. Require the package:
+2. Require the package:
 Run CLI ::
 ```bash
 composer require thisisharshoriya5565/laravel-socialite-google-auth:dev-main
