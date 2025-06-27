@@ -44,11 +44,11 @@ bish :: composer require vendor/laravel-socialite-google-auth:dev-main
 
 This will add the Google section to config/services.php. If it already exists, just manually merge the 'google' => [...] block.
 
-🧠 Usage
-✅ Routes (Auto-Registered)
-Method	URI	Action
-GET	/google/redirect	Redirect to Google OAuth
-GET	/google/callback	Handle callback & login
+🧠 Usage <br>
+✅ Routes (Auto-Registered) <br>
+Method	URI	Action <br>
+GET	/google/redirect	Redirect to Google OAuth <br>
+GET	/google/callback	Handle callback & login 
 
 🔐 What happens after login?
 Google user info is fetched using Socialite
