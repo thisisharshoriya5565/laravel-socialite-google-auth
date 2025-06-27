@@ -54,12 +54,14 @@ composer require vendor/laravel-socialite-google-auth:dev-main
 ```
 
 ⚙️ Configuration
-1. Add to .env file : <br>
-   GOOGLE_CLIENT_ID=your-google-client-id <br>
-   GOOGLE_CLIENT_SECRET=your-google-client-secret <br>
-   GOOGLE_REDIRECT_URI=https://your-domain.com/google/callback <br>
+1. Add to .env file :
+   ```dotenv
+   GOOGLE_CLIENT_ID=your-google-client-id
+   GOOGLE_CLIENT_SECRET=your-google-client-secret
+   GOOGLE_REDIRECT_URI=https://your-domain.com/google/callback
+``
 
-2. (Optional) Publish the config :
+3. (Optional) Publish the config :
 ```bash
 php artisan vendor:publish --tag=google-auth-config
 ```
