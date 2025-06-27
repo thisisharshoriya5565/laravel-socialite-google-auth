@@ -17,30 +17,27 @@ If your package is local (in packages/Vendor/GoogleAuth):
 bash
 Copy
 Edit
-composer require vendor/google-auth:dev-main
+composer require vendor/laravel-socialite-google-auth:dev-main
 Or if hosted in GitHub:
 
 json
 Copy
-Edit
 # composer.json
 "repositories": [
   {
     "type": "vcs",
-    "url": "https://github.com/vendor/google-auth"
+    "url": "https://github.com/vendor/laravel-socialite-google-auth"
   }
 ]
 Then:
 
 bash
 Copy
-Edit
 composer require vendor/google-auth:dev-main
 ⚙️ Configuration
 1. Add to .env:
 env
 Copy
-Edit
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 GOOGLE_REDIRECT_URI=https://your-domain.com/auth/google/callback
