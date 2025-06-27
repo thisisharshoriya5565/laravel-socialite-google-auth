@@ -34,7 +34,7 @@ Then :
 bish :: composer require vendor/laravel-socialite-google-auth:dev-main
 
 ⚙️ Configuration
-1. Add to .env file :
+1. Add to .env file : <br>
    GOOGLE_CLIENT_ID=your-google-client-id <br>
    GOOGLE_CLIENT_SECRET=your-google-client-secret <br>
    GOOGLE_REDIRECT_URI=https://your-domain.com/auth/google/callback <br>
