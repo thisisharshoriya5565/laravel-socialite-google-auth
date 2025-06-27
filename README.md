@@ -60,7 +60,9 @@ composer require vendor/laravel-socialite-google-auth:dev-main
    GOOGLE_REDIRECT_URI=https://your-domain.com/google/callback <br>
 
 2. (Optional) Publish the config :
-   bish : php artisan vendor:publish --tag=google-auth-config
+```bash
+php artisan vendor:publish --tag=google-auth-config
+```
 
 This will add the Google section to config/services.php. If it already exists, just manually merge the 'google' => [...] block.
 
