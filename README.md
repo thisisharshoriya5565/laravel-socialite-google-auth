@@ -19,14 +19,12 @@
 
 1. In your Laravel app's `composer.json`, add:
 ```json
-{
-  "repositories": [
+"repositories": [
     {
       "type": "vcs",
       "url": "https://github.com/thisisharshoriya5565/laravel-socialite-google-auth"
     }
-  ]
-}
+]
 ```
 
 
@@ -64,6 +62,15 @@ composer require vendor/laravel-socialite-google-auth:dev-main
 3. (Optional) Publish the config :
 ```bash
 php artisan vendor:publish --tag=google-auth-config
+```
+
+Then
+```bash
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+php artisan config:cache
 ```
 
 This will add the Google section to config/services.php. If it already exists, just manually merge the 'google' => [...] block.
