@@ -36,7 +36,7 @@ class GoogleController extends Controller
     public function redirect(Request $request)
     {
         try {
-            return Socialite::driver('google')->stateless()->redirect();
+            return Socialite::driver('google')->with(['prompt' => 'select_account'])->stateless()->redirect();
         } catch (\Throwable $th) {
             logger(["google-redirect-error" => $th]);
             return response()->json(['error' => 'Google redirect failed'], 500);
