@@ -1,109 +1,185 @@
-Laravel Socialite Google Auth
+# 🔐 Laravel Socialite Google Auth
+
 ✅ A simple Laravel package to integrate Google OAuth login using Laravel Socialite.
 
-🚀 Features
-Google login via Laravel Socialite
+---
 
-Auto-loads routes and controller
+## 🚀 Features
 
-Publishes Google config to config/services.php
+- 🔑 Google login via Laravel Socialite  
+- ⚙️ Automatically loads routes and controller  
+- 📁 Publishes Google config to `config/services.php`  
+- ✅ Works with Laravel 8, 9, 10+
 
-Works with Laravel 8/9/10+
+---
 
-📦 Installation
-1. Install via Composer
-If your package is local (in packages/Vendor/GoogleAuth):
+## 📦 Installation
 
-bash
-Copy
-Edit
-composer require vendor/laravel-socialite-google-auth:dev-main
-Or if hosted in GitHub:
+### Option 1: Install from GitHub (recommended)
 
-json
-Copy
-# composer.json
+1. In your Laravel app's `composer.json`, add:
+```json
 "repositories": [
-  {
-    "type": "vcs",
-    "url": "https://github.com/vendor/laravel-socialite-google-auth"
-  }
+    {
+      "type": "vcs",
+      "url": "https://github.com/thisisharshoriya5565/laravel-socialite-google-auth"
+    }
 ]
-Then:
+```
 
-bash
-Copy
-composer require vendor/google-auth:dev-main
+
+2. Require the package:
+Run CLI ::
+```bash
+composer require thisisharshoriya5565/laravel-socialite-google-auth:dev-main
+```
+
+Option 2: Local Development (optional)
+If you have the package locally under packages/Vendor/GoogleAuth, add this to composer.json:
+
+```json
+"repositories": [
+          {
+              "type": "path",
+              "url": "packages/Vendor/GoogleAuth"
+          }
+      ]
+```
+
+Then :
+```bash
+composer require vendor/laravel-socialite-google-auth:dev-main
+```
+
 ⚙️ Configuration
-1. Add to .env:
-env
-Copy
-GOOGLE_CLIENT_ID=your-google-client-id
-GOOGLE_CLIENT_SECRET=your-google-client-secret
-GOOGLE_REDIRECT_URI=https://your-domain.com/auth/google/callback
-2. Publish config (optional):
-bash
-Copy
-Edit
+1. Add to .env file :
+   ```dotenv
+   GOOGLE_CLIENT_ID=your-google-client-id
+   GOOGLE_CLIENT_SECRET=your-google-client-secret
+   GOOGLE_REDIRECT_URI=https://your-domain.com/google/callback
+``
+
+3. (Optional) Publish the config :
+```bash
 php artisan vendor:publish --tag=google-auth-config
-🧠 Usage
-1. Routes Automatically Added
-php
-Copy
-Edit
-GET /auth/google              // Redirects to Google
-GET /auth/google/callback     // Handles the callback
-2. After successful login
-A User is created/updated with:
+```
 
-name
+Then
+```bash
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+php artisan config:cache
+```
 
-email
+This will add the Google section to config/services.php. If it already exists, just manually merge the 'google' => [...] block.
 
-google_id
+🧠 Usage <br>
+✅ Routes (Auto-Registered) <br>
+Method	URI	Action <br>
+GET	/google/redirect	Redirect to Google OAuth <br>
+GET	/google/callback	Handle callback & login 
 
-avatar
+🔐 What happens after login?
+Google user info is fetched using Socialite
 
-Authenticated via Auth::login()
+User is created or updated with:
+  1. name
+  2. email
+  3. google_id
+  4. avatar
 
-Redirected to /dashboard or previous page
+  Logged in using Auth::login()  
+  Redirected to /dashboard or intended URL
 
-🛠️ User Table Migration
-Add google_id to your users table:
+  🛠️ User Table Migration
+  To store Google ID, add a google_id column to the users table:
+  bish : php artisan make:migration add_google_id_to_users_table
 
-bash
-Copy
-Edit
-php artisan make:migration add_google_id_to_users_table
-In the migration file:
+  Then in the migration:
+  php : 
+        Schema::table('users', function (Blueprint $table) {
+          $table->string('google_id')->nullable();
+        });
 
-php
-Copy
-Edit
-$table->string('google_id')->nullable();
-Then:
+  Run the migration:  
+  bish : php artisan migrate
 
-bash
-Copy
-Edit
-php artisan migrate
 🧪 Testing
-Visit:
 
-bash
-Copy
-Edit
-http://localhost:8000/auth/google
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="b2code-app-origin" content="https://admin.b2code.in" />
+    <meta name="google-redirect-url" content="{{ route('google.redirect') }}" />
+
+    <title>Google Login</title>
+</head>
+
+<body>
+    <code> <button type="button" id="google-login-btn">Login With Google Button</button> </code>
+
+    <script src="https://admin.b2code.in/cdn/js/oauth-popup-login.obf.js" async defer></script>
+    <script async defer>
+        // google login/signup
+        document.addEventListener("DOMContentLoaded", () => {
+            const googleBtn = document.getElementById("google-login-btn");
+            const redirectMeta = document.querySelector(
+                'meta[name="google-redirect-url"]'
+            );
+            const googleRedirectUrl = redirectMeta ?
+                redirectMeta.getAttribute("content") :
+                "";
+
+            if (!googleBtn || !googleRedirectUrl) {
+                console.error("Missing Google login button or redirect URL.");
+                return;
+            }
+
+            googleBtn.addEventListener("click", async () => {
+                googleBtn.disabled = true;
+                const loginPopup = new OAuthPopupLogin(googleRedirectUrl);
+
+                try {
+                    // Launch Google auth popup first (don't disable button before)
+                    const user = await loginPopup.login();
+                    console.log("✅ Google user:", user);
+
+                    // Disable after successful popup to avoid double submission
+                    googleBtn.disabled = true;
+                } catch (error) {
+                    console.error("❌ Login error:", error?.message || error);
+                    toastr.error(error?.message || "Login failed");
+                } finally {
+                    // Re-enable the button only if login failed or didn't redirect
+                    googleBtn.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+After everything is configured:
+bish : php artisan serve
+
 🙏 Credits
 Built with ❤️ using Laravel Socialite
+Author: Bhanu Pratap Soni
 
 📜 License
-MIT © [Your Name or Company]
+MIT © 2025 Bhanu Pratap Soni
 
-✅ Optional: GitHub Repo Description Box
-Set this in your GitHub repository's description (top bar):
+✅ GitHub Repo Description Suggestion
+Set this in the GitHub repository description box (above your code files):
 
-arduino
-Copy
-Edit
-🔐 Google Login Integration for Laravel using Socialite. Installs quickly, auto-registers routes, and
+cpp
+🔐 Google Login Integration for Laravel using Socialite. Installs quickly, auto-registers routes, and supports Laravel 8/9/10+.
+
